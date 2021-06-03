@@ -1,0 +1,38 @@
+*{
+    font-family: 'Montserrat';
+}
+.titulo{
+    font-weight: bold;
+}
+.cards-collection{
+    justify-content: center;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 1260px;
+    background-color: darkslategray;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 10px;
+}
+.card .card-title{
+    text-align: center;
+}
+
+.card a{
+    width: 100%;
+}
+
+a.add-school{
+    position: fixed;
+    bottom: 7px;
+    right: 7px;
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    border-radius: 100%;
+    font-weight: bold;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
+}
