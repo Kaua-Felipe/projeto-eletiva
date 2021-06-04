@@ -7,55 +7,65 @@
     <title>Escolas</title>
 
     <!-- Importando fontes -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
 
     <!-- Importando os estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="_css/exibicao_escola.css">
 </head>
 <body>
+  <section class="agroup">
+      <div class="collection-title">
+        <h1 class="text-center fw-bold">Minhas Escolas</h1>
+      </div>
+      
+      <section class="cards-collection">
+          <div class="card" style="width: 18rem;">
+              <div class="embed-responsive embed-responsive-1by1">
+                  <img src="images/licolina.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Licolina</h5>
+                <a href="#" class="btn btn-success">Visitar</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <div class="embed-responsive embed-responsive-1by1">
+                  <img src="images/ie_logo.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Manoel Bento da Cruz</h5>
+                <a href="#" class="btn btn-success">Visitar</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <div class="embed-responsive embed-responsive-1by1">
+                  <img src="images/licolina.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">José Candido</h5>
+                <a href="#" class="btn btn-success">Visitar</a>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <div class="embed-responsive embed-responsive-1by1">
+                  <img src="images/etec.jpg" class="card-img-top" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Etec</h5>
+                <a href="#" class="btn btn-success">Visitar</a>
+              </div>
+            </div>
 
-    <h1 class="text-center fw-bold">Minhas Escolas</h1>
-    <section class="cards-collection">
-        <div class="card" style="width: 18rem;">
-            <div class="embed-responsive embed-responsive-1by1">
-                <img src="images/licolina.jpg" class="card-img-top" alt="...">
+            <!-- Caso não haja nenhuma escola cadastrada-->
+            <div class="feedback-message">
+              <div class="feedback-message-image"></div>
+              <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
+              <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Licolina</h5>
-              <a href="#" class="btn btn-success">Visitar</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="embed-responsive embed-responsive-1by1">
-                <img src="images/ie_logo.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Manoel Bento da Cruz</h5>
-              <a href="#" class="btn btn-success">Visitar</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="embed-responsive embed-responsive-1by1">
-                <img src="images/licolina.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">José Candido</h5>
-              <a href="#" class="btn btn-success">Visitar</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="embed-responsive embed-responsive-1by1">
-                <img src="images/etec.jpg" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Etec</h5>
-              <a href="#" class="btn btn-success">Visitar</a>
-            </div>
-          </div>
+      </section>
     </section>
-
     <a href="#" class="add-school btn btn-primary">
         <img src="resources/add-icon.png" alt="">
     </a>
