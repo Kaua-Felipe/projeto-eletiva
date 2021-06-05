@@ -1,16 +1,21 @@
 <?php
     require_once "_conexao_banco/conexao.php";
 
-    if(isset($_POST["nome_usuario"]) && isset($_POST["senha_usuario"])) {
+    if(isset($_POST["nome_usuario"]) && isset($_POST["senha_usuario"]) && isset($_POST["confirmacao_senha"])) {
         $nome_usuario  = $_POST["nome_usuario"];
         $senha_usuario = $_POST["senha_usuario"];
+        $confirmacao_senha = $_POST["confirmacao_senha"];
 
-        // Inclusão de professor no banco
-        $inserir_professor = "INSERT INTO professores (usuario, senha) VALUES ('$nome_usuario', '$senha_usuario')";
-        $executar_insercao = mysqli_query($conecta, $inserir_professor);
+        if(strval($senha_usuario) == strval($confirmacao_senha)) {
+            // Inclusão de professor no banco
+            $inserir_professor = "INSERT INTO professores (usuario, senha) VALUES ('$nome_usuario', '$senha_usuario')";
+            $executar_insercao = mysqli_query($conecta, $inserir_professor);
 
-        if(!$executar_insercao) {
-            die("[ERRO]: Erro na INSERÇÃO!");
+            if(!$executar_insercao) {
+                die("[ERRO]: Erro na INSERÇÃO!");
+            }
+        } else {
+            echo "Senhas não são iguais!";
         }
     }
 ?>
@@ -46,13 +51,13 @@
             <h3>Cadastro do Professor</h3>
 
             <label for="nome_usuario">Nome de Usuário</label>
-            <input type="text" name="nome_usuario" id="nome_usuario" placeholder="Insira um nome de usuário">
+            <input type="text" name="nome_usuario" id="nome_usuario" placeholder="Insira um nome de usuário" required>
 
             <label for="senha">Senha</label>
-            <input type="password" name="senha_usuario" id="senha" placeholder="Insira uma senha">
+            <input type="password" name="senha_usuario" id="senha" placeholder="Insira uma senha" required>
 
-            <label for="senha">Confirmar Senha</label>
-            <input type="password" name="senha_usuario" id="senha" placeholder="Confirmar Senha"><br>
+            <label for="confirmacao_senha">Confirmar Senha</label>
+            <input type="password" name="confirmacao_senha" id="confirmacao_senha" placeholder="Confirmar Senha" required><br>
 
             <input type="submit" value="ENVIAR">
         </form>
