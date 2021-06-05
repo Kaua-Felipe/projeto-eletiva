@@ -1,21 +1,28 @@
 <?php
     require_once "_conexao_banco/conexao.php";
 
-    if(isset($_POST["nome_usuario"]) && isset($_POST["senha_usuario"]) && isset($_POST["confirmacao_senha"])) {
+    if(empty($_POST["nome_usuario"]) || empty($_POST["senha_usuario"]) || empty($_POST["confirmacao_senha"])) {
+        echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
+    } else {
         $nome_usuario  = $_POST["nome_usuario"];
         $senha_usuario = $_POST["senha_usuario"];
         $confirmacao_senha = $_POST["confirmacao_senha"];
 
-        if(strval($senha_usuario) == strval($confirmacao_senha)) {
-            // Inclusão de professor no banco
+        if(strval($senha_usuario) === strval($confirmacao_senha)) {
+            // Faz a inclusão de professor na tabela professores no banco de dados
             $inserir_professor = "INSERT INTO professores (usuario, senha) VALUES ('$nome_usuario', '$senha_usuario')";
             $executar_insercao = mysqli_query($conecta, $inserir_professor);
-
             if(!$executar_insercao) {
                 die("[ERRO]: Erro na INSERÇÃO!");
+            } else {
+                echo "<script>alert('Cadastro realizado com sucesso!')</script>";
             }
         } else {
-            echo "Senhas não são iguais!";
+            echo "
+                <div class='alert alert-danger' role='alert' style='position: absolute; top: 40%; right: 40%; width: 20%; border-radius: 5px;'>
+                    [ERRO]: As senhas devem ser iguais para realizar o cadastro!
+                </div>
+            ";
         }
     }
 ?>
@@ -65,7 +72,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <script></script>
+    <></>
 </body>
 </html>
 
