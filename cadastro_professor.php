@@ -60,8 +60,8 @@
             <label for="nome_usuario">Nome de Usuário</label>
             <input type="text" name="nome_usuario" id="nome_usuario" placeholder="Insira um nome de usuário" required>
 
-            <label for="senha">Senha</label>
-            <input type="password" name="senha_usuario" id="senha" placeholder="Insira uma senha" required>
+            <label for="senha_usuario">Senha</label>
+            <input type="password" name="senha_usuario" id="senha_usuario" placeholder="Insira uma senha" required>
 
             <label for="confirmacao_senha">Confirmar Senha</label>
             <input type="password" name="confirmacao_senha" id="confirmacao_senha" placeholder="Confirmar Senha" required><br>
@@ -72,7 +72,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <></>
 </body>
 </html>
 
