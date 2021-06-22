@@ -2,9 +2,6 @@
     margin: 0;
     padding: 0;
 }
-body {
-    background-color: rgb(210, 234, 255);
-}
 
 section#container-cadastro-escola {
     display: none;
@@ -17,14 +14,15 @@ section#container-cadastro-escola {
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.816);
-    padding-top: 60px;
+    padding-top: 30px;
 }
 form.modal-content {
     background-color: #F6F6F6;
-    margin: 5% auto 15% auto;
+    margin: 0 auto 15% auto;
     width: 30%;
     padding-top: 30px;
     border: 2px solid #3d9db35f;
+    transition-duration: 1s;
 }
 form h3 {
     color: #066a75;
@@ -85,6 +83,10 @@ label.img_escola {
     margin-top: 10px;
     cursor: pointer;
     border-radius: 5px;
+    transition-duration: .2s;
+}
+.img_escola:hover {
+    box-shadow: 1px 1px 8px black;
 }
 input[type=submit] {
     border: none;
@@ -96,10 +98,12 @@ input[type=submit] {
     font-size: 15px;
     font-weight: bolder;
     text-shadow: 0 1px 1px #333;
-    border: 1px solid #fff;
+    transition-duration: .2s;
+    /* border: 1px solid #fff; */
 }
 input[type="submit"]:hover{
     background: #4ab3c6;
+    transform: scale(1.10);
 }
 div.container-rodape {
     background-color: #E1EAEB;
@@ -116,6 +120,14 @@ div.container-rodape {
 }
 .cancelbtn:hover {
     opacity: 0.8;
+}
+.animate {
+    animation: animatezoom .9s;
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
 }
 
 @media(max-width: 1040px) {

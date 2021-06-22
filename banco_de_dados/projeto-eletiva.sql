@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Jun-2021 às 00:19
+-- Tempo de geração: 23-Jun-2021 às 01:18
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.6
 
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `escolas`
+--
+
+CREATE TABLE `escolas` (
+  `ID_escola` int(11) NOT NULL,
+  `img_escola` varchar(100) NOT NULL,
+  `nome_escola` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `professores`
 --
 
@@ -34,17 +46,14 @@ CREATE TABLE `professores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `professores`
---
-
-INSERT INTO `professores` (`ID_professor`, `usuario`, `senha`) VALUES
-(1, '', ''),
-(2, 'Roberto', 'roberto123'),
-(3, 'Carlos', 'carlos123');
-
---
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `escolas`
+--
+ALTER TABLE `escolas`
+  ADD PRIMARY KEY (`ID_escola`);
 
 --
 -- Índices para tabela `professores`
@@ -57,10 +66,16 @@ ALTER TABLE `professores`
 --
 
 --
+-- AUTO_INCREMENT de tabela `escolas`
+--
+ALTER TABLE `escolas`
+  MODIFY `ID_escola` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `ID_professor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_professor` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
