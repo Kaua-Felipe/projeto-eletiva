@@ -1,5 +1,5 @@
 <section id="container-cadastro-escola">
-    <form action="exibicao_escolas.php" method="post" class="modal-content animate">
+    <form enctype="multipart/form-data" action="../_php_action/cadastroEscola.php" method="post" class="modal-content animate">
         <h3>Adicionar Escolas</h3>
         <div class="container-campos">
             <p>
