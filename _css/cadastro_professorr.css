@@ -1,5 +1,6 @@
 body {
     background-color: rgb(210, 234, 255);
+    overflow: hidden;
 }
 * {
     border: 0;
