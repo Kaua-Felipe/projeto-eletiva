@@ -1,5 +1,5 @@
 <section id="container-cadastro-escola">
-    <form action="" method="post" class="modal-content">
+    <form action="" method="post" class="modal-content animate">
         <h3>Adicionar Turma</h3>
         <div class="container-campos">
             <p>

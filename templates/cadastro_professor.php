@@ -2,7 +2,7 @@
     require_once "../_conexao_banco/conexao.php";
 
     if(empty($_POST["nome_usuario"]) || empty($_POST["senha_usuario"]) || empty($_POST["confirmacao_senha"])) {
-        echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
+        //echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
     } else {
         $nome_usuario  = $_POST["nome_usuario"];
         $senha_usuario = $_POST["senha_usuario"];

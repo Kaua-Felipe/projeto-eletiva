@@ -1,5 +1,10 @@
 <?php
   require_once "../_conexao_banco/conexao.php";
+  
+  session_start();
+  if(!$_SESSION["logado"]) {
+    header("location: cadastro_professor.php");
+  }
 
   if(empty($_POST["img_escola"]) || empty($_POST["nome_escola"])) {
     echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
@@ -56,7 +61,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">Licolina</h5>
-                <a href="#" class="btn btn-success">Visitar</a>
+                <a href="exibicao_turmas.php" class="btn btn-success">Visitar</a>
               </div>
             </div>
             <div class="card" style="width: 18rem;">
