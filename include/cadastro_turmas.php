@@ -1,15 +1,15 @@
 <section id="container-cadastro-escola">
-    <form action="" method="post" class="modal-content animate">
+    <form action="../templates/exibicao_turmas.php" method="post" class="modal-content animate">
         <h3>Adicionar Turma</h3>
         <div class="container-campos">
             <p>
                 <label>Escolha uma imagem para a escola</label>
                 <label for="img_escola" class="img_escola">Selecioinar</label>
-                <input type="file" name="img_escola" id="img_escola" required>
+                <input type="file" name="img_escola" id="img_escola">
             </p>
             <p>
-                <label for="nome_escola">Nome da Turma</label>
-                <input type="text" name="nome_escola" id="nome_escola" placeholder="Informe o nome da turma" required>
+                <label for="nome_turma">Nome da Turma</label>
+                <input type="text" name="nome_turma" id="nome_turma" placeholder="Informe o nome da turma" required>
             </p>
             <p>
                 <input type="submit" value="ENVIAR">

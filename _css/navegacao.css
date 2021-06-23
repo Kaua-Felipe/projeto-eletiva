@@ -3,12 +3,17 @@
   background-color: #161B22;
   overflow: auto;
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
+  justify-content: space-between;
   position: sticky;
-  top: 0;
+  top: 0px;
+  padding: 10px 50px;
+}
+div.links {
+  float: right;
 }
 .navbar a {
-  float: right;
+  /* float: right; */
   padding: 12px;
   color: white;
   text-decoration: none;

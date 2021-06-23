@@ -5,6 +5,21 @@
   if(!$_SESSION["logado"]) {
     header("location: cadastro_professor.php");
   }
+
+  if(empty($_POST["nome_turma"])) {
+    echo "<script>alert('Os campos precisam ser preenchidos!')</script>";
+  } else {
+    $nome_turma = $_POST["nome_turma"];
+
+    $inserir_turma = "INSERT INTO turmas (nome_turma) VALUES ('$nome_turma')";
+    $executar_insercao_turma = mysqli_query($conecta, $inserir_turma);
+
+    if(!$executar_insercao_turma) {
+      die("[ERRO]: Erro na INSERÇÃO!");
+    } else {
+      echo "<script>alert('Inserção de TURMA realizada com sucesso!')</script>";
+    }
+  }
 ?>
 
 <!DOCTYPE html>
