@@ -1,5 +1,4 @@
 <?php
-        var_dump($_FILES);
         $formatosPermitidos = array('png','jpeg', 'jpg', 'gif','jfif');
         $extensao = pathinfo($_FILES['img_escola']['name'],PATHINFO_EXTENSION);
             

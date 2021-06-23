@@ -1,6 +1,5 @@
 <?php
   require_once "../_conexao_banco/conexao.php";
-  var_dump($_FILES);
   if(empty($_FILES["img_escola"]) || empty($_POST["nome_escola"])) {
     echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
   } else {
@@ -18,4 +17,5 @@
       echo "<script>alert('Inserção realizada com sucesso!')</script>";
     }
   }
+  header('Location: ../templates/exibicao_escolas.php');
 ?>
