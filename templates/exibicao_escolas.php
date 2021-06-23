@@ -9,7 +9,8 @@
   if(empty($_POST["img_escola"]) || empty($_POST["nome_escola"])) {
     echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
   } else {
-    $img_escola = $_POST["img_escola"];
+    include_once "../include/upload_image.php";
+    $img_escola = $imagem;
     $nome_escola = $_POST["nome_escola"];
 
     // Inserção de escola no banco
