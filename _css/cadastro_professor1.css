@@ -6,8 +6,13 @@ body {
     border: 0;
     padding: 0;
 }
+div.img-inicio {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .container {
-    margin: 200px auto;
+    margin: 100px auto 0 auto;
     width: 80%;
     display: flex;
     justify-content: space-between;

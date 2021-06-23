@@ -1,5 +1,10 @@
 <?php
   require_once "../_conexao_banco/conexao.php";
+  
+  session_start();
+  if(!$_SESSION["logado"]) {
+    header("location: cadastro_professor.php");
+  }
 
   if(empty($_POST["img_escola"]) || empty($_POST["nome_escola"])) {
     echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
@@ -17,6 +22,14 @@
     } else {
       echo "<script>alert('Inserção realizada com sucesso!')</script>";
     }
+  }
+
+  // SELECIONAR TODAS AS ESCOLAS DO BANCO
+  $todas_escolas = "SELECT * FROM escolas";
+  $executar_selecao_escolas = mysqli_query($conecta, $todas_escolas);
+
+  if(!$executar_selecao_escolas) {
+    die("[ERRO]: Erro na SELEÇÃO!");
   }
 ?>
 
@@ -51,49 +64,28 @@
       </div>
       
       <section class="cards-collection">
-          <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="../images/licolina.jpg" class="card-img-top" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Licolina</h5>
-                <a href="#" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
+        <?php
+          while($dados = mysqli_fetch_assoc($executar_selecao_escolas)) :
+        ?>
             <div class="card" style="width: 18rem;">
               <div class="embed-responsive embed-responsive-1by1">
-                  <img src="../images/ie_logo.jpg" class="card-img-top" alt="...">
+                  <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" alt="...">
               </div>
               <div class="card-body">
-                <h5 class="card-title">Manoel Bento da Cruz</h5>
-                <a href="#" class="btn btn-success">Visitar</a>
+                <h5 class="card-title"><?php echo $dados["nome_escola"] ?></h5>
+                <a href="exibicao_turmas.php" class="btn btn-success">Visitar</a>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="../images/licolina.jpg" class="card-img-top" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">José Candido</h5>
-                <a href="#" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="../images/etec.jpg" class="card-img-top" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Etec</h5>
-                <a href="#" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
-
-            <!-- Caso não haja nenhuma escola cadastrada-->
-            <div class="feedback-message">
-              <div class="feedback-message-image"></div>
-              <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
-              <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
-            </div>
+        <?php
+          endwhile;
+        ?>
+        
+        <!-- Caso não haja nenhuma escola cadastrada-->
+        <div class="feedback-message">
+          <div class="feedback-message-image"></div>
+          <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
+          <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
+        </div>
       </section>
     </section>
 

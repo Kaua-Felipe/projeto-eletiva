@@ -6,7 +6,7 @@
                 <img src="../resources/predefinicao-escola.png" id="img" width="100%" height="300">
                 <label>Escolha uma imagem para a escola</label>
                 <label for="img_escola" class="img_escola">Selecionar</label>
-                <input type="file" name="img_escola" id="img_escola" onchange="previewImage()" required multiple>
+                <input type="file" name="img_escola" id="img_escola" onchange="previewImage()" required>
             </p>
             <p>
                 <label for="nome_escola">Nome da escola</label>

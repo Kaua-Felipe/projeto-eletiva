@@ -1,3 +1,27 @@
+<?php
+  require_once "../_conexao_banco/conexao.php";
+  session_start();
+
+  if(!$_SESSION["logado"]) {
+    header("location: cadastro_professor.php");
+  }
+
+  if(empty($_POST["nome_turma"])) {
+    echo "<script>alert('Os campos precisam ser preenchidos!')</script>";
+  } else {
+    $nome_turma = $_POST["nome_turma"];
+
+    $inserir_turma = "INSERT INTO turmas (nome_turma) VALUES ('$nome_turma')";
+    $executar_insercao_turma = mysqli_query($conecta, $inserir_turma);
+
+    if(!$executar_insercao_turma) {
+      die("[ERRO]: Erro na INSERÇÃO!");
+    } else {
+      echo "<script>alert('Inserção de TURMA realizada com sucesso!')</script>";
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,12 +35,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
 
     <!-- Importando os estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="../_css/exibicao_escola.css">
     <link rel="stylesheet" href="../_css/cadastro_escola.css">
+    <link rel="stylesheet" href="../_css/navegacao.css">
 </head>
 <body>
-  <?php include_once "../include/cadastro_turmas.php"; ?>
+  <?php
+    include_once "../include/cadastro_turmas.php";
+    include_once "../include/navegacao.php";
+  ?>
 
   <section class="agroup">
       <div class="collection-title">
@@ -30,7 +59,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">1° Série A</h5>
-                <a href="lista_alunos.html" class="btn btn-success">Visitar</a>
+                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
               </div>
             </div>
             <div class="card" style="width: 18rem;">
@@ -39,7 +68,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">2° Série A</h5>
-                <a href="lista_alunos.html" class="btn btn-success">Visitar</a>
+                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
               </div>
             </div>
             <div class="card" style="width: 18rem;">
@@ -48,7 +77,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">3° Série A</h5>
-                <a href="lista_alunos.html" class="btn btn-success">Visitar</a>
+                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
               </div>
             </div>
             <div class="card" style="width: 18rem;">
@@ -57,7 +86,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">3° Série B</h5>
-                <a href="lista_alunos.html" class="btn btn-success">Visitar</a>
+                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
               </div>
             </div>
 
@@ -78,3 +107,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php mysqli_close($conecta); ?>
