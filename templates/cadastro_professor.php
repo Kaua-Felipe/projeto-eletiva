@@ -40,14 +40,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="cadastro_professor.php" method="post">
+        <form action="../_php_action/login.php" method="post">
             <h3>Login</h3>
 
             <label for="nome_usuario">Usuário</label>
-            <input type="text" name="nome_usuario" id="nome_usuario" placeholder="Insira nome de usuário">
+            <input type="text" name="nome_usuario" id="nome_usuario" placeholder="Insira nome de usuário" required>
 
             <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha" placeholder="Insira a sua senha"><br><br><br><br>
+            <input type="password" name="senha" id="senha" placeholder="Insira a sua senha" required><br><br><br><br>
 
             <input type="submit" value="LOGAR">
         </form>
