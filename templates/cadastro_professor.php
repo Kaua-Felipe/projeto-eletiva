@@ -1,5 +1,5 @@
 <?php
-    require_once "_conexao_banco/conexao.php";
+    require_once "../_conexao_banco/conexao.php";
 
     if(empty($_POST["nome_usuario"]) || empty($_POST["senha_usuario"]) || empty($_POST["confirmacao_senha"])) {
         echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
@@ -36,7 +36,7 @@
     <title>Cadastro e Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="_css/cadastro_professorr.css">
+    <link rel="stylesheet" href="../_css/cadastro_professorr.css">
 </head>
 <body>
     <div class="container">
