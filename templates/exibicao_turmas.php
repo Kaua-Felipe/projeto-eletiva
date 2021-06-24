@@ -7,7 +7,7 @@
   }
 
   if(empty($_POST["nome_turma"])) {
-    echo "<script>alert('Os campos precisam ser preenchidos!')</script>";
+    // echo "<script>alert('Os campos precisam ser preenchidos!')</script>";
   } else {
     $nome_turma = $_POST["nome_turma"];
 
@@ -19,6 +19,15 @@
     } else {
       echo "<script>alert('Inserção de TURMA realizada com sucesso!')</script>";
     }
+  }
+
+  // SELECIONAR TODAS AS TURMAS DO BANCO
+  $todas_turmas = "SELECT * FROM turmas";
+  $executar_selecao_turmas = mysqli_query($conecta, $todas_turmas);
+  $num_turmas = mysqli_num_rows($executar_selecao_turmas);
+
+  if(!$executar_selecao_turmas) {
+    die("[ERRO]: Erro na SELEÇÃO!");
   }
 ?>
 
@@ -37,7 +46,7 @@
     <!-- Importando os estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="../_css/exibicao_escola.css">
+    <link rel="stylesheet" href="../_css/exibicao_escolas.css">
     <link rel="stylesheet" href="../_css/cadastro_escola.css">
     <link rel="stylesheet" href="../_css/navegacao.css">
 </head>
@@ -47,55 +56,47 @@
     include_once "../include/navegacao.php";
   ?>
 
+  <nav>
+    <div class="paginacao-links">
+      <a href="exibicao_escolas.php">Escolas</a>
+      <span> > </span>
+      <span>Turmas</span>
+    </div>
+    <div></div>
+  </nav>
+
   <section class="agroup">
       <div class="collection-title">
         <h1 class="text-center fw-bold">Minhas Turmas</h1>
       </div>
       
       <section class="cards-collection">
-          <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top" alt="...">
+          <?php
+            if($num_turmas > 0) {
+              while($dados = mysqli_fetch_assoc($executar_selecao_turmas)) :
+          ?>
+              <div class="card" style="width: 18rem;">
+                <div class="embed-responsive embed-responsive-1by1">
+                    <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $dados["nome_turma"] ?></h5>
+                  <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
+                </div>
               </div>
-              <div class="card-body">
-                <h5 class="card-title">1° Série A</h5>
-                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">2° Série A</h5>
-                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">3° Série A</h5>
-                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">3° Série B</h5>
-                <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
-              </div>
-            </div>
-
-            <!-- Caso não haja nenhuma escola cadastrada-->
-            <div class="feedback-message">
-              <div class="feedback-message-image"></div>
-              <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
-              <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
-            </div>
+          <?php
+              endwhile;
+            } else {
+          ?>
+                <!-- Caso não haja nenhuma turma cadastrada-->
+                <div class="feedback-message">
+                  <div class="feedback-message-image"></div>
+                  <h1 class="feedback-message-title">Nenhuma Turma encontrada</h1>
+                  <h2 class="feedback-message-subtitle">Faça o cadastro de uma Turma clicando no botão com o símbolo de +</h2>
+                </div>
+          <?php
+            }
+          ?>
       </section>
     </section>
 

@@ -7,7 +7,7 @@
   }
 
   if(empty($_POST["img_escola"]) || empty($_POST["nome_escola"])) {
-    echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
+    // echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
   } else {
     include_once "../include/upload_image.php";
     $img_escola = $imagem;
@@ -27,6 +27,7 @@
   // SELECIONAR TODAS AS ESCOLAS DO BANCO
   $todas_escolas = "SELECT * FROM escolas";
   $executar_selecao_escolas = mysqli_query($conecta, $todas_escolas);
+  $num_escolas = mysqli_num_rows($executar_selecao_escolas);
 
   if(!$executar_selecao_escolas) {
     die("[ERRO]: Erro na SELEÇÃO!");
@@ -48,7 +49,7 @@
     <!-- Importando os estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="../_css/exibicao_escola.css">
+    <link rel="stylesheet" href="../_css/exibicao_escolas.css">
     <link rel="stylesheet" href="../_css/cadastro_escola.css">
     <link rel="stylesheet" href="../_css/navegacao.css">
 </head>
@@ -58,6 +59,13 @@
     include_once "../include/navegacao.php";
   ?>
 
+  <nav>
+    <div class="paginacao-links">
+      <span style="margin-left: 0;"> Escolas </span>
+    </div>
+    <div></div>
+  </nav>
+
   <section class="agroup">
       <div class="collection-title">
         <h1 class="text-center fw-bold">Minhas Escolas</h1>
@@ -65,11 +73,12 @@
       
       <section class="cards-collection">
         <?php
-          while($dados = mysqli_fetch_assoc($executar_selecao_escolas)) :
+          if($num_escolas > 0) {
+            while($dados = mysqli_fetch_assoc($executar_selecao_escolas)) :
         ?>
             <div class="card" style="width: 18rem;">
               <div class="embed-responsive embed-responsive-1by1">
-                  <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" alt="...">
+                  <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" height="286">
               </div>
               <div class="card-body">
                 <h5 class="card-title"><?php echo $dados["nome_escola"] ?></h5>
@@ -77,15 +86,18 @@
               </div>
             </div>
         <?php
-          endwhile;
+            endwhile;
+          } else {
+        ?>    
+              <!-- Caso não haja nenhuma escola cadastrada-->
+              <div class="feedback-message">
+                <div class="feedback-message-image"></div>
+                <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
+                <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
+              </div>
+        <?php
+          }
         ?>
-        
-        <!-- Caso não haja nenhuma escola cadastrada-->
-        <div class="feedback-message">
-          <div class="feedback-message-image"></div>
-          <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
-          <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
-        </div>
       </section>
     </section>
 
