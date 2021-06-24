@@ -86,8 +86,11 @@ h2.feedback-message-subtitle{
     color: #3c4043;
 }
 
+/* Estilos do fab button*/
+
 a.add-school{
     position: fixed;
+    padding: 0;
     bottom: 7px;
     right: 7px;
     width: 80px;
@@ -98,5 +101,5 @@ a.add-school{
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
 }
 a.add-school img{
-    margin: 0 auto;
+    padding-top: 28px;
 }
