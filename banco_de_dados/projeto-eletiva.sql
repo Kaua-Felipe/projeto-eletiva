@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Jun-2021 às 23:12
+-- Tempo de geração: 24-Jun-2021 às 23:51
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.6
 
@@ -24,6 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `alunos`
+--
+
+CREATE TABLE `alunos` (
+  `ID_aluno` int(11) NOT NULL,
+  `nome_aluno` varchar(50) NOT NULL,
+  `dataNascimento_aluno` date NOT NULL,
+  `numero_aluno` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `escolas`
 --
 
@@ -32,18 +45,6 @@ CREATE TABLE `escolas` (
   `img_escola` varchar(100) NOT NULL,
   `nome_escola` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `escolas`
---
-
-INSERT INTO `escolas` (`ID_escola`, `img_escola`, `nome_escola`) VALUES
-(1, '60d3577fa2b92.jpg', 'Etec'),
-(2, '60d3577faa1d6.jpg', 'Etec'),
-(3, '60d35792a56f9.jpg', 'Manoel Bento da Cruz'),
-(4, '60d3a06d9ce94.jpg', 'Licolina Villela Reis Alves'),
-(5, '60d3a188e107f.jpg', 'Manoel Bento da Cruz'),
-(6, '60d3a344c65ae.jpg', 'Etec de Araçatuba');
 
 -- --------------------------------------------------------
 
@@ -57,14 +58,6 @@ CREATE TABLE `professores` (
   `senha` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `professores`
---
-
-INSERT INTO `professores` (`ID_professor`, `usuario`, `senha`) VALUES
-(1, 'Paulo Alexandre', 'paulo123'),
-(2, 'Diego', 'diego123');
-
 -- --------------------------------------------------------
 
 --
@@ -77,17 +70,14 @@ CREATE TABLE `turmas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `turmas`
---
-
-INSERT INTO `turmas` (`ID_turma`, `nome_turma`) VALUES
-(1, '3°B'),
-(2, '1°A Geogra'),
-(3, '1°D Geografia');
-
---
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `alunos`
+--
+ALTER TABLE `alunos`
+  ADD PRIMARY KEY (`ID_aluno`);
 
 --
 -- Índices para tabela `escolas`
@@ -112,22 +102,28 @@ ALTER TABLE `turmas`
 --
 
 --
+-- AUTO_INCREMENT de tabela `alunos`
+--
+ALTER TABLE `alunos`
+  MODIFY `ID_aluno` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `escolas`
 --
 ALTER TABLE `escolas`
-  MODIFY `ID_escola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_escola` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `ID_professor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_professor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `turmas`
 --
 ALTER TABLE `turmas`
-  MODIFY `ID_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_turma` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
