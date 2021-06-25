@@ -5,7 +5,6 @@
     if(!$_SESSION["logado"]) {
         header("location: cadastro_professor.php");
     }
-
     // SELECIONAR TODOS OS ALUNOS DO BANCO
     $id_turma = $_GET['turma'];
     $todos_alunos = "SELECT * FROM alunos WHERE ID_turma_FK = $id_turma";
@@ -34,14 +33,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     
     <link rel="stylesheet" href="../_css/navegacao1.css">
-    <link rel="stylesheet" href="../_css/cadastro_escola.css">
+    <link rel="stylesheet" href="../_css/editar_aluno.css">
     <link rel="stylesheet" href="../_css/rodape.css">
     <link rel="stylesheet" href="../_css/lista_alunos1.css">
 </head>
 <body>
     <?php
         include_once "../include/navegacao.php";
-        include_once "../include/cadastro_alunos.php";
+        // include_once "../include/cadastro_alunos.php";
+        include_once "../include/editar_alunos.php";
+        if(isset($_GET["aluno_id"])):
+            echo "<script>document.getElementById('container-editar-aluno').style.display='block'</script>";
+        endif;
     ?>
 
     <nav>
@@ -85,7 +88,7 @@
                                 <td><?php echo $dados["numero_aluno"] ?></td>
                                 <td>Manoel Bento da Cruz</a></td>
                                 <td>
-                                    <a href="#">
+                                    <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>&aluno_id=<?php echo $dados['ID_aluno']?>">
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" 
                                             width="32.000000pt" 
                                             height="32.000000pt"
