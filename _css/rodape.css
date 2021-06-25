@@ -9,9 +9,9 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    /* position: relative;
     bottom: 0;
-    width: 100%;
+    width: 100%; */
 }
 footer .icone-escola {
     text-align: center;
