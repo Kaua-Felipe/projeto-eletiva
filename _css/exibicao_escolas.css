@@ -138,6 +138,9 @@ a.add-school{
     font-weight: bold;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.7);
 }
+a.add-school:hover {
+    transform: scale(0.93);
+}
 a.add-school img{
     margin: 0 auto;
 }

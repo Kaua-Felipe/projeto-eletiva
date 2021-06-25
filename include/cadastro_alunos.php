@@ -3,6 +3,7 @@
         <h3>Adicionar Aluno(a)</h3>
         <div class="container-campos">
             <p>
+                <img src="../resources/img_cadastro_aluno.png" id="img" width="100%" height="300">
                 <label for="nome_aluno">Nome do Aluno(a)</label>
                 <input type="text" name="nome_aluno" id="nome_aluno" placeholder="Informe o nome do(a) aluno(a)" required>
             </p>
