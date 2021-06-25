@@ -1,6 +1,7 @@
 <?php
   require_once "../_conexao_banco/conexao.php";
   session_start();
+  
 
   if(!$_SESSION["logado"]) {
     header("location: cadastro_professor.php");
