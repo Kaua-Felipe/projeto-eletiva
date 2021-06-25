@@ -3,9 +3,10 @@
         <h3>Adicionar Turma</h3>
         <div class="container-campos">
             <p>
-                <label>Escolha uma imagem para a escola</label>
+                <img src="../resources/img_cadastro_turma.png" id="img" width="100%" height="300">
+                <!-- <label>Escolha uma imagem para a escola</label>
                 <label for="img_escola" class="img_escola">Selecioinar</label>
-                <input type="file" name="img_escola" id="img_escola">
+                <input type="file" name="img_escola" id="img_escola"> -->
             </p>
             <p>
                 <label for="nome_turma">Nome da Turma</label>

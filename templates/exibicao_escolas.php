@@ -33,7 +33,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="../_css/exibicao_escolas.css">
     <link rel="stylesheet" href="../_css/cadastro_escola.css">
-    <link rel="stylesheet" href="../_css/navegacao.css">
+    <link rel="stylesheet" href="../_css/navegacao1.css">
+    <link rel="stylesheet" href="../_css/rodape.css">
 </head>
 <body>
   <?php
@@ -82,6 +83,8 @@
         ?>
       </section>
     </section>
+
+    <?php include_once "../include/rodape.php"; ?>
 
     <a href="#" class="add-school btn btn-primary" onclick="document.getElementById('container-cadastro-escola').style.display='block'">
         <img src="../resources/add-icon.png" alt="">
