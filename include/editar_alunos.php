@@ -7,7 +7,7 @@
     endif;
 ?>
 <section id="container-editar-aluno">
-    <form action="../_php_action/editar_aluno.php?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>" method="post" class="modal-content animate">
+    <form action="../_php_action/editar_aluno.php?aluno_id=<?php echo $id_aluno; ?>&escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>" method="post" class="modal-content animate">
         <h3>Editar Aluno(a)</h3>
         <div class="container-campos">
             <p>
