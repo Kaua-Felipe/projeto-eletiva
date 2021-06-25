@@ -1,5 +1,5 @@
 <section id="container-cadastro-escola">
-    <form action="../templates/exibicao_turmas.php" method="post" class="modal-content animate">
+    <form action="../templates/exibicao_turmas.php?escola=<?php echo $_GET['escola']?>" method="post" class="modal-content animate">
         <h3>Adicionar Turma</h3>
         <div class="container-campos">
             <p>

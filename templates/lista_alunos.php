@@ -7,7 +7,8 @@
     }
 
     // SELECIONAR TODOS OS ALUNOS DO BANCO
-    $todos_alunos = "SELECT * FROM alunos";
+    $id_turma = $_GET['turma'];
+    $todos_alunos = "SELECT * FROM alunos WHERE ID_turma_FK = $id_turma";
     $executar_selecao_alunos = mysqli_query($conecta, $todos_alunos);
     $num_alunos = mysqli_num_rows($executar_selecao_alunos);
 
@@ -46,7 +47,7 @@
         <div class="paginacao-links">
             <a href="exibicao_escolas.php">Escolas</a>
             <span> > </span>
-            <a href="exibicao_turmas.php" id="last-link">Turmas</a>
+            <a href="exibicao_turmas.php?escola=<?php echo $_GET['escola']?>" id="last-link">Turmas</a>
             <span> > </span>
             <span>Listagem dos Alunos</span>
         </div>
@@ -54,9 +55,14 @@
     </nav>
 
     <main>
-        <?php
-            if($num_alunos > 0) {
-        ?>
+        <section class="agroup">
+            <div class="collection-title">
+                <h1 class="text-center fw-bold">[Mostrará o nome da escola]</h1>
+            </div>
+            <?php
+                if($num_alunos > 0):
+            ?>
+            <div class="collection">
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
@@ -72,7 +78,7 @@
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $dados["nome_aluno"] ?></th>
-                                <td><?php echo $dados["dataNascimento_aluno"] ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($dados["dataNascimento_aluno"])) ?></td>
                                 <td><?php echo $dados["numero_aluno"] ?></td>
                                 <td>Manoel Bento da Cruz</a></td>
                             </tr>
@@ -82,7 +88,7 @@
                     </tbody>
                 </table>
         <?php
-            } else{
+            else:
         ?>
                 <!-- Caso não haja nenhuma escola cadastrada-->
                 <div class="feedback-message">
@@ -90,9 +96,10 @@
                     <h1 class="feedback-message-title">Nenhum(a) aluno(a) encontrado(a)</h1>
                     <h2 class="feedback-message-subtitle">Faça o cadastro de um(a) aluno(a) clicando no botão com o símbolo de +</h2>
                 </div>
-        <?php
-            }
-        ?>
+        <?php endif; ?>
+
+            </div>
+        </section>
     </main>
 
     <a href="#" class="add-school btn btn-primary" onclick="document.getElementById('container-cadastro-escola').style.display='block'">
