@@ -22,6 +22,7 @@
                 if($senha_usuario == $dados_senha['senha']) {
                     echo "<script>alert('Senha Correta!')</script>";
                     $_SESSION['logado'] = true;
+                    $_SESSION['ID_professor'] = $dados['ID_professor'];
                     header("location: ../templates/exibicao_escolas.php");
                 } else {
                     echo "Senha Inválida!";

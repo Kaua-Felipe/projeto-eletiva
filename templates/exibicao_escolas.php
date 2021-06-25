@@ -1,31 +1,13 @@
 <?php
   require_once "../_conexao_banco/conexao.php";
-  
   session_start();
+
   if(!$_SESSION["logado"]) {
     header("location: cadastro_professor.php");
   }
-
-  if(empty($_POST["img_escola"]) || empty($_POST["nome_escola"])) {
-    // echo "<script>alert('Todos os campos precisam estar preenchidos!')</script>";
-  } else {
-    include_once "../include/upload_image.php";
-    $img_escola = $imagem;
-    $nome_escola = $_POST["nome_escola"];
-
-    // Inserção de escola no banco
-    $inserir_escola = "INSERT INTO escolas (img_escola ,nome_escola) VALUES ('$img_escola' ,'$nome_escola')";
-    $executar_insercao_escola = mysqli_query($conecta, $inserir_escola);
-
-    if(!$executar_insercao_escola) {
-      die("[ERRO]: Erro na INSERÇÃO!");
-    } else {
-      echo "<script>alert('Inserção realizada com sucesso!')</script>";
-    }
-  }
-
   // SELECIONAR TODAS AS ESCOLAS DO BANCO
-  $todas_escolas = "SELECT * FROM escolas";
+  $id_professor = $_SESSION['ID_professor'];
+  $todas_escolas = "SELECT * FROM escolas WHERE ID_professor_FK = '$id_professor'";
   $executar_selecao_escolas = mysqli_query($conecta, $todas_escolas);
   $num_escolas = mysqli_num_rows($executar_selecao_escolas);
 
@@ -83,7 +65,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title"><?php echo $dados["nome_escola"] ?></h5>
-                <a href="exibicao_turmas.php" class="btn btn-success">Visitar</a>
+                <a href="exibicao_turmas.php?escola=<?php echo $dados['ID_escola']?>" class="btn btn-success">Visitar</a>
               </div>
             </div>
         <?php

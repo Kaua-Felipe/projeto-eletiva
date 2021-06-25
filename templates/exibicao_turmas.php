@@ -6,12 +6,14 @@
     header("location: cadastro_professor.php");
   }
 
+  $id_escola = $_GET['escola'];
+
   if(empty($_POST["nome_turma"])) {
     // echo "<script>alert('Os campos precisam ser preenchidos!')</script>";
   } else {
     $nome_turma = $_POST["nome_turma"];
 
-    $inserir_turma = "INSERT INTO turmas (nome_turma) VALUES ('$nome_turma')";
+    $inserir_turma = "INSERT INTO turmas (nome_turma, ID_escola_FK) VALUES ('$nome_turma','$id_escola')";
     $executar_insercao_turma = mysqli_query($conecta, $inserir_turma);
 
     if(!$executar_insercao_turma) {
@@ -22,7 +24,7 @@
   }
 
   // SELECIONAR TODAS AS TURMAS DO BANCO
-  $todas_turmas = "SELECT * FROM turmas";
+  $todas_turmas = "SELECT * FROM turmas WHERE ID_escola_FK = $id_escola";
   $executar_selecao_turmas = mysqli_query($conecta, $todas_turmas);
   $num_turmas = mysqli_num_rows($executar_selecao_turmas);
 
@@ -82,7 +84,7 @@
                 </div>
                 <div class="card-body">
                   <h5 class="card-title"><?php echo $dados["nome_turma"] ?></h5>
-                  <a href="lista_alunos.php" class="btn btn-success">Visitar</a>
+                  <a href="lista_alunos.php?escola=<?php echo $dados["ID_escola_FK"];?>&turma=<?php echo $dados["ID_turma"];?>" class="btn btn-success">Visitar</a>
                 </div>
               </div>
           <?php
