@@ -1,5 +1,5 @@
 <section id="container-cadastro-escola">
-    <form action="../_php_action/cadastro_aluno.php" method="post" class="modal-content animate">
+    <form action="../_php_action/cadastro_aluno.php?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>" method="post" class="modal-content animate">
         <h3>Adicionar Aluno(a)</h3>
         <div class="container-campos">
             <p>
