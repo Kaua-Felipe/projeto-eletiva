@@ -20,15 +20,20 @@
                 $dados_senha = mysqli_fetch_assoc($resultado_senha);
 
                 if($senha_usuario == $dados_senha['senha']) {
-                    echo "<script>alert('Senha Correta!')</script>";
                     $_SESSION['logado'] = true;
                     $_SESSION['ID_professor'] = $dados['ID_professor'];
+                    $_SESSION["mensagem-sucesso"] = "
+                        <div class='alert alert-success' role='alert' style='z-index: 2; border: solid green 1px; position: absolute; top: 1%; right: 40%; width: 20%; border-radius: 5px;'>
+                            Você foi logado com sucesso!
+                        </div>
+                    ";
                     header("location: ../templates/exibicao_escolas.php");
+                    exit();
                 } else {
-                    echo "Senha Inválida!";
+                    echo "<script>alert('Senha Inválida')</script>";
+                    header("location: ../templates/cadastro_professor.php");
+                    exit();
                 }
-                
-                print_r($dados_senha);
                 /*if(password_verify($senha_usuario, $dados['senha'])) {
                     $_SESSION["logado"]     = true;
                     $_SESSION['id_usuario'] = $dados['id_user'];
@@ -38,7 +43,7 @@
                 }*/
             }
         } else {
-            echo "Não há nenhuma conta encontrada";
+            echo "Não há nenhuma conta encontrada, coloque uma conta que exista!";
         }
     }
 

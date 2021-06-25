@@ -18,30 +18,7 @@
         </div>
         
         <div class="container-rodape">
-            <button type="button" onclick="document.getElementById('container-cadastro-escola').style.display='none'" class="cancelbtn">Cancelar</button>
+            <button type="button" onclick="sairModelo()" class="cancelbtn">Cancelar</button>
         </div>
     </form>
 </section>
-
-<script>
-    // Get the modal
-    var modal = document.getElementById('container-cadastro-escola');
-    
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if(event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    var inputFicheiro = document.getElementById('img_escola');
-    var img = document.getElementById("img")
-
-    function previewImage() {
-        var oFReader = new FileReader()
-        oFReader.readAsDataURL(inputFicheiro.files[0])
-        oFReader.onload = function(oFREvent) {
-            img.src = oFREvent.target.result
-        }
-    }
-</script>
