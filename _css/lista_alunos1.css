@@ -80,6 +80,13 @@ table.table {
     margin: 0 auto;
     border-radius: 10px;
 }
+.table td, th{
+    vertical-align: middle;
+    text-align: center;
+}
+.table tr th:first-child{
+    text-align: left;
+}
 
 /* Feedback Message */
 div.feedback-message{
