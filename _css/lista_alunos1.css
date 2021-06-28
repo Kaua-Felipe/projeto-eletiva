@@ -3,6 +3,7 @@ body {
 }
 img, svg {
     vertical-align: unset;
+    /* overflow: visible; */
 }
 
 /* Estilos do Scroll  */
