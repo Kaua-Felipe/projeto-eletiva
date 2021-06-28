@@ -124,6 +124,10 @@
   <?php
     include_once "../include/cadastro_turmas.php";
     include_once "../include/navegacao.php";
+    include_once "../include/confirmacao_exclusao_turma.php";
+    if(isset($_GET["turma"])) :
+      echo "<script>document.querySelector('section#janela-exclusao-turmas').style.display='initial'</script>";
+    endif;
   ?>
 
   <nav>
@@ -148,8 +152,12 @@
               <div class="card" style="width: 18rem;">
                 <div class="embed-responsive embed-responsive-1by1">
                     <div class="container-icones">
-                      <div id="icone-editar"><?php echo $btn_editar?></div>
-                      <div id="icone-excluir"><?php echo $btn_excluir?></div>
+                      <div id="icone-editar"><a href=""><?php echo $btn_editar?></a></div>
+                      <div id="icone-excluir">
+                        <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $dados["ID_turma"]?>">
+                          <?php echo $btn_excluir?>
+                        </a>
+                      </div>
                     </div>
                     <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top">
                 </div>
@@ -172,7 +180,7 @@
             }
           ?>
       </section>
-    </section>
+  </section>
 
     <?php include_once "../include/rodape.php"; ?>
 

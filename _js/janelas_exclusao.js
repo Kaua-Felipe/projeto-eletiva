@@ -1,5 +1,4 @@
 var modalExclusao = document.getElementById("janela-exclusao")
-var linkExclusao = document.getElementById("link-exclusao")
 var btnCancelarExclusao = document.getElementById("btn-cancelar-exclusao")
 var btnSairModal = document.querySelector("button.btn-close")
 
