@@ -4,15 +4,21 @@
 
     if(!$_SESSION["logado"]) {
         header("location: cadastro_professor.php");
-    }
+    } else {
+        if(!isset($_GET["escola"]) && !isset($_GET["turma"])) {
+            header("location: exibicao_escolas.php");
+        }
+    }    
+    
     // SELECIONAR TODOS OS ALUNOS DO BANCO
     $id_turma = $_GET['turma'];
-    $todos_alunos = "SELECT * FROM alunos WHERE ID_turma_FK = $id_turma";
+    $todos_alunos = "SELECT * FROM alunos WHERE ID_turma_FK = $id_turma ORDER BY numero_aluno ASC";
     $executar_selecao_alunos = mysqli_query($conecta, $todos_alunos);
     $num_alunos = mysqli_num_rows($executar_selecao_alunos);
     if(!$executar_selecao_alunos) { 
         die("[ERRO]: Erro na SELEÇÃO de alunos!");
     }
+
     // SELECIONAR O NOME DA TURMA
     $query_turma = "SELECT nome_turma FROM turmas WHERE ID_turma = $id_turma";
     $executar_selecao_turma = mysqli_query($conecta, $query_turma);

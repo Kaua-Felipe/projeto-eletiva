@@ -29,3 +29,13 @@ function previewImage() {
         img.src = oFREvent.target.result
     }
 }
+
+// MENSAGEM DE SUCESSO DO LOGIN
+var corpoPagina = document.getElementsByTagName('body')[0]
+var msgSucesso  = document.getElementsByClassName("alert-success")[0]
+
+corpoPagina.addEventListener('mousemove', sairMensagemSucesso)
+
+function sairMensagemSucesso() {
+    msgSucesso.style.opacity = "0"
+}

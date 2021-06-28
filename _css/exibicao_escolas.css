@@ -90,10 +90,20 @@ div.collection-title h1{
     margin: 10px;
     padding-bottom: 0;
     transition-duration: .5s;
+    height: 470px;
 }
 .card:hover {
     transform: scale(1.05);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.578);
+}
+.container-icones {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    /* position: absolute; */
+    background-color: #d0d0d045;
+    padding: 5px 3px 5px 0;
+    padding-left: 6px;
 }
 .card-body {
     width: 286px;
@@ -101,7 +111,7 @@ div.collection-title h1{
 }
 .card .card-title{
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 .card a{
     width: 100%;
@@ -140,8 +150,7 @@ h2.feedback-message-subtitle{
     color: #3c4043;
 }
 
-/* Estilos do fab button*/
-
+/* Estilos do fab button */
 a.add-school{
     position: fixed;
     padding: 0;
@@ -159,4 +168,11 @@ a.add-school:hover {
 }
 a.add-school img{
     padding-top: 28px;
+}
+
+/* MENSAGEM DE SUCESSO */
+.alert-success {
+    transition-duration: 2.5s;
+    transition-delay: 1s;
+    opacity: 1;
 }
