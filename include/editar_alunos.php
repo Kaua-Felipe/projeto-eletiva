@@ -29,19 +29,7 @@
         </div>
         
         <div class="container-rodape">
-            <button type="button" onclick="document.getElementById('container-editar-aluno').style.display='none'" class="cancelbtn">Cancelar</button>
+            <button type="button" class="cancelbtn" id="btn-cancelar-edicao">Cancelar</button>
         </div>
     </form>
 </section>
-
-<script>
-    // Get the modal
-    var modal = document.getElementById('container-editar-aluno');
-    
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if(event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>

@@ -5,11 +5,8 @@ var btnSairModal = document.querySelector("button.btn-close")
 
 btnCancelarExclusao.addEventListener('click', sairModeloExclusao)
 btnSairModal.addEventListener('click', sairModeloExclusao)
-linkExclusao.addEventListener('click', abrirModeloExclusao)
 
-function abrirModeloExclusao() {
-    modalExclusao.style.display = "block"
-}
 function sairModeloExclusao() {
     modalExclusao.style.display = "none"
+    document.getElementsByTagName('body')[0].style.overflow = 'auto'
 }

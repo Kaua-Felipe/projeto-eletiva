@@ -25,3 +25,14 @@
         </div>
     </form>
 </section>
+
+<script>
+    var modalCadastroAluno = document.getElementById('container-cadastro-escola');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if(event.target == modalCadastroAluno) {
+            modalCadastroAluno.style.display = "none"
+        }
+    }
+</script>

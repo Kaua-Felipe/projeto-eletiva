@@ -10,10 +10,19 @@
     $todos_alunos = "SELECT * FROM alunos WHERE ID_turma_FK = $id_turma";
     $executar_selecao_alunos = mysqli_query($conecta, $todos_alunos);
     $num_alunos = mysqli_num_rows($executar_selecao_alunos);
-
-    if(!$executar_selecao_alunos) {
+    if(!$executar_selecao_alunos) { 
         die("[ERRO]: Erro na SELEÇÃO de alunos!");
     }
+    // SELECIONAR O NOME DA TURMA
+    $query_turma = "SELECT nome_turma FROM turmas WHERE ID_turma = $id_turma";
+    $executar_selecao_turma = mysqli_query($conecta, $query_turma);
+    $nome_turma = mysqli_fetch_assoc($executar_selecao_turma)['nome_turma'];
+
+    // SELECIONAR O NOME DA ESCOLA
+    $id_escola = $_GET['escola'];
+    $query_escola = "SELECT nome_escola FROM escolas WHERE ID_escola = $id_escola";
+    $executar_selecao_escola = mysqli_query($conecta, $query_escola);
+    $nome_escola = mysqli_fetch_assoc($executar_selecao_escola)['nome_escola'];
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +46,7 @@
     <link rel="stylesheet" href="../_css/rodape.css">
     <link rel="stylesheet" href="../_css/lista_alunos1.css">
     <link rel="stylesheet" href="../_css/janelas_exclusao.css">
+    <link rel="stylesheet" href="../_css/cadastro_escola.css">
 
     <!-- Ícone do guia -->
     <link rel="shortcut icon" href="../resources/logotipo.png" type="image/x-icon">
@@ -45,10 +55,24 @@
     <?php
         include_once "../include/navegacao.php";
         include_once "../include/cadastro_alunos.php";
-        include_once "../include/editar_alunos.php";
         include_once "../include/confirmacao_exclusao.php";
+        include_once "../include/editar_alunos.php";
         if(isset($_GET["aluno_id"])):
-            echo "<script>document.getElementById('container-editar-aluno').style.display='block'</script>";
+            if(isset($_GET["deletar_aluno"])){
+                echo "
+                    <script>
+                        document.getElementById('janela-exclusao').style.display='block'
+                        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+                    </script>
+                ";
+            }else{
+                echo "
+                    <script>
+                        document.getElementById('container-editar-aluno').style.display='block'
+                        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+                    </script>
+                ";
+            }
         endif;
     ?>
 
@@ -66,7 +90,7 @@
     <main>
         <section class="agroup">
             <div class="collection-title">
-                <h1 class="text-center fw-bold">[Mostrará o nome da escola]</h1>
+                <h1 class="text-center fw-bold"><?php echo $nome_turma?> - <?php echo $nome_escola;?></h1>
             </div>
             <?php
                 if($num_alunos > 0):
@@ -93,7 +117,7 @@
                                 <td><?php echo $dados["numero_aluno"] ?></td>
                                 <td>Manoel Bento da Cruz</a></td>
                                 <td>
-                                    <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>&aluno_id=<?php echo $dados['ID_aluno']?>">
+                                    <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>&aluno_id=<?php echo $dados['ID_aluno']?>" id="link-edicao">
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" 
                                             width="32.000000pt" 
                                             height="32.000000pt"
@@ -138,7 +162,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>&aluno_id=<?php echo $dados['ID_aluno']?>" id="link-exclusao">
+                                    <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>&aluno_id=<?php echo $dados['ID_aluno']?>&deletar_aluno=<?php echo $dados['ID_aluno'] ?>" id="link-exclusao">
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                             width="32.000000pt" 
                                             height="32.000000pt" 
@@ -199,8 +223,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-    <script src="../_js/janelas_cadastro.js"></script>
     <script src="../_js/janelas_exclusao.js"></script>
+    <script src="../_js/janelas_cadastro.js"></script>
+    <script src="../_js/janelas_edicao.js"></script>
 </body>
 </html>
 
