@@ -10,10 +10,19 @@
     $todos_alunos = "SELECT * FROM alunos WHERE ID_turma_FK = $id_turma";
     $executar_selecao_alunos = mysqli_query($conecta, $todos_alunos);
     $num_alunos = mysqli_num_rows($executar_selecao_alunos);
-
-    if(!$executar_selecao_alunos) {
+    if(!$executar_selecao_alunos) { 
         die("[ERRO]: Erro na SELEÇÃO de alunos!");
     }
+    // SELECIONAR O NOME DA TURMA
+    $query_turma = "SELECT nome_turma FROM turmas WHERE ID_turma = $id_turma";
+    $executar_selecao_turma = mysqli_query($conecta, $query_turma);
+    $nome_turma = mysqli_fetch_assoc($executar_selecao_turma)['nome_turma'];
+
+    // SELECIONAR O NOME DA ESCOLA
+    $id_escola = $_GET['escola'];
+    $query_escola = "SELECT nome_escola FROM escolas WHERE ID_escola = $id_escola";
+    $executar_selecao_escola = mysqli_query($conecta, $query_escola);
+    $nome_escola = mysqli_fetch_assoc($executar_selecao_escola)['nome_escola'];
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +71,7 @@
     <main>
         <section class="agroup">
             <div class="collection-title">
-                <h1 class="text-center fw-bold">[Mostrará o nome da escola]</h1>
+                <h1 class="text-center fw-bold"><?php echo $nome_turma?> - <?php echo $nome_escola;?></h1>
             </div>
             <?php
                 if($num_alunos > 0):
