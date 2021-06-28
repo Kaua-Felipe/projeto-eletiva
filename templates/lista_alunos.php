@@ -36,11 +36,12 @@
     <link rel="stylesheet" href="../_css/editar_aluno.css">
     <link rel="stylesheet" href="../_css/rodape.css">
     <link rel="stylesheet" href="../_css/lista_alunos1.css">
+    <link rel="stylesheet" href="../_css/cadastro_escola.css">
 </head>
 <body>
     <?php
         include_once "../include/navegacao.php";
-        // include_once "../include/cadastro_alunos.php";
+        include_once "../include/cadastro_alunos.php";
         include_once "../include/editar_alunos.php";
         if(isset($_GET["aluno_id"])):
             echo "<script>document.getElementById('container-editar-aluno').style.display='block'</script>";
