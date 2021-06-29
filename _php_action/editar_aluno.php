@@ -13,7 +13,6 @@
 
         // Atualização de aluno no banco
         $atualiza_aluno   = "UPDATE alunos SET nome_aluno = '$nome_aluno', dataNascimento_aluno = '$data_nascimento', numero_aluno = '$numero_chamada', ID_turma_FK = '$id_turma' WHERE ID_aluno = '$id_aluno'";
-        print_r($atualiza_aluno);
         $executar_atualiza_aluno = mysqli_query($conecta, $atualiza_aluno);
 
         if(!$executar_atualiza_aluno) {
