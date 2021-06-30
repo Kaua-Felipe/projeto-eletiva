@@ -16,9 +16,9 @@
         $executar_atualiza_aluno = mysqli_query($conecta, $atualiza_aluno);
 
         if(!$executar_atualiza_aluno) {
-            die("[ERRO]: Erro na INSERÇÃO!");
+            die("[ERRO]: Erro na ATUALIZAÇÃO!");
         } else {
-            echo "<script>alert('Inserção realizada com sucesso!')</script>";
+            echo "<script>alert('Atualização realizada com sucesso!')</script>";
             header("location: ../templates/lista_alunos.php?escola=$id_escola&turma=$id_turma");
         }
     }

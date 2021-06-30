@@ -12,7 +12,7 @@
         $executar_atualiza_turma = mysqli_query($conecta, $atualiza_turma);
     
         if(!$executar_atualiza_turma) {
-          die("[ERRO]: Erro na INSERÇÃO!");
+          die("[ERRO]: Erro na ATUALIZAÇÃO!");
         } else {
           echo "<script>alert('Atualização de TURMA realizada com sucesso!')</script>";
           header("location: ../templates/exibicao_turmas.php?escola=$id_escola");
