@@ -231,7 +231,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="../_js/janelas_exclusao.js"></script>
     <script src="../_js/janelas_cadastro.js"></script>
-    <script src="../_js/janelas_edicao.js"></script>
+    <script src="../_js/janelas_edicao1.js"></script>
 </body>
 </html>
 

@@ -6,7 +6,7 @@
         $dados_aluno = mysqli_fetch_assoc($executar_selecao_aluno);
     endif;
 ?>
-<section id="container-editar-aluno">
+<section id="container-editar-aluno" class="modal-editar">
     <form action="../_php_action/editar_aluno.php?aluno_id=<?php echo $id_aluno; ?>&escola=<?php echo $_GET['escola']?>&turma=<?php echo $_GET['turma']?>" method="post" class="modal-content animate">
         <h3>Editar Aluno(a)</h3>
         <div class="container-campos">
@@ -29,7 +29,7 @@
         </div>
         
         <div class="container-rodape">
-            <button type="button" class="cancelbtn" id="btn-cancelar-edicao">Cancelar</button>
+            <button type="button" class="cancelbtn" onclick="sairModeloEdicao()">Cancelar</button>
         </div>
     </form>
 </section>
