@@ -117,14 +117,25 @@
     <link rel="stylesheet" href="../_css/editar_turmas1.css">
     <link rel="stylesheet" href="../_css/navegacao1.css">
     <link rel="stylesheet" href="../_css/rodape.css">
+    <link rel="stylesheet" href="../_css/janelas_exclusao.css">
 
     <!-- Ícone do guia -->
     <link rel="shortcut icon" href="../resources/logotipo.png" type="image/x-icon">
 </head>
 <body>
   <?php
+    include_once "../include/confirmacao_exclusao_turma.php";
     include_once "../include/cadastro_turmas.php";
     include_once "../include/navegacao.php";
+    if(isset($_GET["turma"])) :
+      echo "
+        <script>
+          document.querySelector('section#janela-exclusao').style.display='block'
+          document.getElementsByClassName('navbar')[0].style.zIndex = '-1'
+          document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+        </script>
+      ";
+    endif;
   ?>
   <?php
     if(isset($_GET['turma_id'])):
@@ -157,9 +168,11 @@
                       <a href="?escola=<?php echo $dados['ID_escola_FK']?>&turma_id=<?php echo $dados['ID_turma']?>">
                         <div id="icone-editar"><?php echo $btn_editar?></div>
                       </a>
-                      <a href="#">
-                        <div id="icone-excluir" style="float:right"><?php echo $btn_excluir?></div>
-                      </a>
+                      <div id="icone-excluir">
+                        <a href="?escola=<?php echo $_GET['escola']?>&turma=<?php echo $dados["ID_turma"]?>">
+                          <?php echo $btn_excluir?>
+                        </a>
+                      </div>
                     </div>
                     <img src="https://i.pinimg.com/originals/91/de/f1/91def1bcb95e3618902a9af9ed7e50ad.png" class="card-img-top">
                 </div>
@@ -182,7 +195,7 @@
             }
           ?>
       </section>
-    </section>
+  </section>
 
     <?php include_once "../include/rodape.php"; ?>
 
@@ -194,6 +207,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="../_js/janelas_cadastro.js"></script>
     <script src="../_js/janelas_edicao1.js"></script>
+    <script src="../_js/janelas_exclusao.js"></script>
 </body>
 </html>
 

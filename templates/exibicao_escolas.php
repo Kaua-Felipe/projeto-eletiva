@@ -114,6 +114,7 @@
     <link rel="stylesheet" href="../_css/editar_escolas.css">
     <link rel="stylesheet" href="../_css/navegacao1.css">
     <link rel="stylesheet" href="../_css/rodape.css">
+    <link rel="stylesheet" href="../_css/janelas_exclusao.css">
 
     <!-- Ícone do guia -->
     <link rel="shortcut icon" href="../resources/logotipo.png" type="image/x-icon">
@@ -122,8 +123,18 @@
   <?php
     include_once "../include/cadastro_escola.php";
     include_once "../include/navegacao.php";
+    include_once "../include/confirmacao_exclusao_escola.php";
     if(isset($_GET['escola_id'])):
       include_once "../include/editar_escolas.php";
+    endif;
+    if(isset($_GET["escola"])) :
+      echo "
+        <script>
+          document.querySelector('section#janela-exclusao').style.display='block'
+          document.getElementsByClassName('navbar')[0].style.zIndex = '-1'
+          document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+        </script>
+      ";
     endif;
   ?>
 
@@ -150,9 +161,11 @@
                     <a href="?escola_id=<?php echo $dados['ID_escola']?>">
                       <div id="icone-editar"><?php echo $btn_editar?></div>
                     </a>
-                    <a href="#">
-                      <div id="icone-excluir" style="float: right;"><?php echo $btn_excluir?></div>
-                    </a>
+                    <div id="icone-excluir">
+                      <a href="?escola=<?php echo $dados["ID_escola"]?>">
+                        <?php echo $btn_excluir?>
+                      </a>
+                    </div>
                   </div>
                   <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" height="286">
               </div>
@@ -187,6 +200,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="../_js/janelas_cadastro.js"></script>
     <script src="../_js/janelas_edicao1.js"></script>
+    <script src="../_js/janelas_exclusao.js"></script>
+    <script>
+      // MENSAGEM DE SUCESSO DO LOGIN
+      var corpoPagina = document.getElementsByTagName('body')[0]
+      var msgSucesso  = document.getElementsByClassName("alert-success")[0]
+
+      corpoPagina.addEventListener('mousemove', sairMensagemSucesso)
+
+      function sairMensagemSucesso() {
+          msgSucesso.style.opacity = "0"
+      }
+    </script>
 </body>
 </html>
 
