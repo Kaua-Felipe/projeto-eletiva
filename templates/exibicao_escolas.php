@@ -113,6 +113,7 @@
     <link rel="stylesheet" href="../_css/cadastro_escola.css">
     <link rel="stylesheet" href="../_css/navegacao1.css">
     <link rel="stylesheet" href="../_css/rodape.css">
+    <link rel="stylesheet" href="../_css/janelas_exclusao.css">
 
     <!-- Ícone do guia -->
     <link rel="shortcut icon" href="../resources/logotipo.png" type="image/x-icon">
@@ -121,6 +122,16 @@
   <?php
     include_once "../include/cadastro_escola.php";
     include_once "../include/navegacao.php";
+    include_once "../include/confirmacao_exclusao_escola.php";
+    if(isset($_GET["escola"])) :
+      echo "
+        <script>
+          document.querySelector('section#janela-exclusao').style.display='block'
+          document.getElementsByClassName('navbar')[0].style.zIndex = '-1'
+          document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+        </script>
+      ";
+    endif;
   ?>
 
   <nav>
@@ -144,7 +155,11 @@
               <div class="embed-responsive embed-responsive-1by1">
                   <div class="container-icones">
                     <div id="icone-editar"><?php echo $btn_editar?></div>
-                    <div id="icone-excluir"><?php echo $btn_excluir?></div>
+                    <div id="icone-excluir">
+                      <a href="?escola=<?php echo $dados["ID_escola"]?>">
+                        <?php echo $btn_excluir?>
+                      </a>
+                    </div>
                   </div>
                   <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" height="286">
               </div>
@@ -178,6 +193,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="../_js/janelas_cadastro.js"></script>
+    <script src="../_js/janelas_exclusao.js"></script>
     <script>
       // MENSAGEM DE SUCESSO DO LOGIN
       var corpoPagina = document.getElementsByTagName('body')[0]

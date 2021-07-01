@@ -116,17 +116,24 @@
     <link rel="stylesheet" href="../_css/cadastro_escola.css">
     <link rel="stylesheet" href="../_css/navegacao1.css">
     <link rel="stylesheet" href="../_css/rodape.css">
+    <link rel="stylesheet" href="../_css/janelas_exclusao.css">
 
     <!-- Ícone do guia -->
     <link rel="shortcut icon" href="../resources/logotipo.png" type="image/x-icon">
 </head>
 <body>
   <?php
+    include_once "../include/confirmacao_exclusao_turma.php";
     include_once "../include/cadastro_turmas.php";
     include_once "../include/navegacao.php";
-    include_once "../include/confirmacao_exclusao_turma.php";
     if(isset($_GET["turma"])) :
-      echo "<script>document.querySelector('section#janela-exclusao-turmas').style.display='initial'</script>";
+      echo "
+        <script>
+          document.querySelector('section#janela-exclusao').style.display='block'
+          document.getElementsByClassName('navbar')[0].style.zIndex = '-1'
+          document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+        </script>
+      ";
     endif;
   ?>
 
@@ -191,6 +198,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="../_js/janelas_cadastro.js"></script>
+    <script src="../_js/janelas_exclusao.js"></script>
 </body>
 </html>
 
