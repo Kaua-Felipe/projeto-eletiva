@@ -146,49 +146,49 @@
   </nav>
 
   <section class="agroup">
-      <div class="collection-title">
-        <h1 class="text-center fw-bold">Minhas Escolas</h1>
-      </div>
-      
-      <section class="cards-collection">
-        <?php
-          if($num_escolas > 0) {
-            while($dados = mysqli_fetch_assoc($executar_selecao_escolas)) :
-        ?>
-            <div class="card" style="width: 18rem;">
-              <div class="embed-responsive embed-responsive-1by1">
-                  <div class="container-icones">
-                    <a href="?escola_id=<?php echo $dados['ID_escola']?>">
-                      <div id="icone-editar"><?php echo $btn_editar?></div>
+    <div class="collection-title">
+      <h1 class="text-center fw-bold">Minhas Escolas</h1>
+    </div>
+    
+    <section class="cards-collection">
+      <?php
+        if($num_escolas > 0) {
+          while($dados = mysqli_fetch_assoc($executar_selecao_escolas)) :
+      ?>
+          <div class="card" style="width: 18rem;">
+            <div class="embed-responsive embed-responsive-1by1">
+                <div class="container-icones">
+                  <a href="?escola_id=<?php echo $dados['ID_escola']?>">
+                    <div id="icone-editar"><?php echo $btn_editar?></div>
+                  </a>
+                  <div id="icone-excluir">
+                    <a href="?escola=<?php echo $dados["ID_escola"]?>">
+                      <?php echo $btn_excluir?>
                     </a>
-                    <div id="icone-excluir">
-                      <a href="?escola=<?php echo $dados["ID_escola"]?>">
-                        <?php echo $btn_excluir?>
-                      </a>
-                    </div>
                   </div>
-                  <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" height="286">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><?php echo $dados["nome_escola"] ?></h5>
-                <a href="exibicao_turmas.php?escola=<?php echo $dados['ID_escola']?>" class="btn btn-success">Visitar</a>
-              </div>
+                </div>
+                <img src="../images/<?php echo $dados['img_escola']; ?>" class="card-img-top" height="286">
             </div>
-        <?php
-            endwhile;
-          } else {
-        ?>    
-              <!-- Caso não haja nenhuma escola cadastrada-->
-              <div class="feedback-message">
-                <div class="feedback-message-image"></div>
-                <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
-                <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
-              </div>
-        <?php
-          }
-        ?>
-      </section>
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $dados["nome_escola"] ?></h5>
+              <a href="exibicao_turmas.php?escola=<?php echo $dados['ID_escola']?>" class="btn btn-success">Visitar</a>
+            </div>
+          </div>
+      <?php
+          endwhile;
+        } else {
+      ?>    
+            <!-- Caso não haja nenhuma escola cadastrada-->
+            <div class="feedback-message">
+              <div class="feedback-message-image"></div>
+              <h1 class="feedback-message-title">Nenhuma escola encontrada</h1>
+              <h2 class="feedback-message-subtitle">Faça o cadastro de uma escola clicando no botão com o símbolo de +</h2>
+            </div>
+      <?php
+        }
+      ?>
     </section>
+  </section>
 
     <?php include_once "../include/rodape.php"; ?>
 

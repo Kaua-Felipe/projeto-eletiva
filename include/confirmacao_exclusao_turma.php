@@ -24,7 +24,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>Você realmente deseja excluir a turma <strong>"<?php echo $dados_turma["nome_turma"]?>"</strong> permanentemente da escola <strong>"<?php echo $dados_escola["nome_escola"]?>"</strong>?</p>
+            <p>Você realmente deseja excluir a turma <strong>"<?php echo $dados_turma["nome_turma"]?>"</strong> e todos os alunos permanentemente da escola <strong>"<?php echo $dados_escola["nome_escola"]?>"</strong>?</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cancelar-exclusao">Cancelar</button>
