@@ -1,11 +1,58 @@
-*{
-    font-family: 'Fira Sans';
+body {
+    background-color: rgb(210, 234, 255) /*rgb(99, 99, 99)*/;
 }
-body{
-    background-color: #ffcc66;
+img, svg {
+    vertical-align: unset;
+    /* overflow: visible; */
+}
+
+/* Estilos do Scroll  */
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    border: 7px solid #161B22;
+    box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(142, 142, 142);
+    border-radius: 80px;
+}
+
+nav {
+    max-width: 1260px;
+    width: 98%;
+    margin: 30px auto 0 auto;
+}
+.paginacao-links {
+    display: flex;
+}
+nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+nav a:first-child {
+    margin-left: 0;
+}
+span {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+span:last-child {
+    cursor: not-allowed;
+}
+nav div:last-child {
+    background-color: blue;
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
 }
 .agroup{
-    margin: 2% auto;
+    margin: 1% auto;
     max-width: 1260px;
     width: 98%;
     background-color: white;
@@ -23,33 +70,26 @@ div.collection-title{
     display: flex;
     justify-content: center;
 }
-
-div.collection-title h1{
-    align-self: center;
-    margin: 0;
-}
-.cards-collection{
+.collection{
     min-height: 430px;
     justify-content: center;
     padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
 }
-
-.card{
-    margin: 10px;
+table.table {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 10px;
 }
-.card .card-title{
+.table td, th{
+    vertical-align: middle;
     text-align: center;
 }
-
-.card a{
-    width: 100%;
+.table tr th:first-child{
+    text-align: left;
 }
 
 /* Feedback Message */
 div.feedback-message{
-    display: none;
     text-align: center;
     width: 100%;
 }
@@ -81,6 +121,7 @@ h2.feedback-message-subtitle{
     color: #3c4043;
 }
 
+/* BOTÃO ADICIONAR */
 a.add-school{
     position: fixed;
     bottom: 7px;
