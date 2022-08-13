@@ -117,7 +117,7 @@
     <link rel="stylesheet" href="../_css/janelas_exclusao.css">
 
     <!-- Ícone do guia -->
-    <link rel="shortcut icon" href="../resources/logotipo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../resources/logotipo.png">
 </head>
 <body>
   <?php
